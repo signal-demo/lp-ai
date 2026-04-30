@@ -1,0 +1,1492 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIコンサルティング | 中小企業専門のAI導入支援</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@400;700;900&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/@phosphor-icons/webcomponents@2.1"></script>
+  <style>
+    :root {
+      --color-primary: #1e1560;
+      --color-accent: #7c3aed;
+      --color-accent-light: #677be5;
+      --color-accent-pale: #a78bfa;
+      --gradient-main: linear-gradient(135deg, #677be5 0%, #9b4dca 100%);
+      --gradient-hero: linear-gradient(135deg, #0f0b3d 0%, #1e1560 50%, #2d1b69 100%);
+      --color-bg: #ffffff;
+      --color-bg-alt: #f5f3ff;
+      --color-bg-dark: #0f0b3d;
+      --color-text: #1e1b4b;
+      --color-text-light: #6b7280;
+      --color-text-white: #f8fafc;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Zen Kaku Gothic Antique', sans-serif;
+      color: var(--color-text);
+      background: var(--color-bg);
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 80px;
+    }
+
+    section { padding: 100px 0; position: relative; }
+
+    /* ─── HERO ─────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      background: var(--gradient-hero);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #hero .top-line::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--gradient-main);
+    }
+
+    .hero-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.06);
+      pointer-events: none;
+    }
+    .hero-ring-1 { width: 600px; height: 600px; top: -100px; right: -100px; }
+    .hero-ring-2 { width: 900px; height: 900px; top: -250px; right: -250px; }
+    .hero-ring-3 { width: 400px; height: 400px; bottom: -150px; left: -100px; border-color: rgba(124,58,237,0.15); }
+
+    .hero-glow {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-glow-1 {
+      width: 500px; height: 500px;
+      top: -100px; right: 100px;
+      background: radial-gradient(circle, rgba(124,58,237,0.25) 0%, transparent 65%);
+    }
+    .hero-glow-2 {
+      width: 300px; height: 300px;
+      bottom: 50px; left: 200px;
+      background: radial-gradient(circle, rgba(103,123,229,0.2) 0%, transparent 65%);
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 80px;
+      width: 100%;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(124,58,237,0.2);
+      border: 1px solid rgba(124,58,237,0.4);
+      color: var(--color-accent-pale);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 8px 16px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.1s;
+    }
+
+    .hero-catch {
+      font-size: 72px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.3s;
+    }
+
+    .hero-catch .accent-word {
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.8;
+      max-width: 520px;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.5s;
+    }
+
+    .hero-cta {
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.7s;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gradient-main);
+      color: #ffffff;
+      font-family: 'Zen Kaku Gothic Antique', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      padding: 18px 40px;
+      border-radius: 100px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 40px rgba(124,58,237,0.4), 0 8px 32px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 60px rgba(124,58,237,0.55), 0 16px 48px rgba(0,0,0,0.25);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #ffffff;
+      font-family: 'Zen Kaku Gothic Antique', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 36px;
+      border-radius: 100px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.14);
+      border-color: rgba(255,255,255,0.35);
+      transform: translateY(-2px);
+    }
+
+    .hero-illust {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      animation: fadeIn 0.8s ease forwards 0.9s;
+    }
+
+    .hero-illust img {
+      width: 100%;
+      max-width: 480px;
+      filter: drop-shadow(0 0 60px rgba(124,58,237,0.3));
+    }
+
+    /* ─── PAIN ──────────────────────────────────────── */
+    #pain {
+      background: var(--color-bg-alt);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-number {
+      position: absolute;
+      top: -20px; left: 80px;
+      font-size: 160px;
+      font-weight: 900;
+      opacity: 0.035;
+      line-height: 1;
+      pointer-events: none;
+      color: var(--color-primary);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--color-text);
+      line-height: 1.25;
+      text-wrap: balance;
+    }
+
+    .section-title .highlight {
+      background: linear-gradient(transparent 60%, rgba(124,58,237,0.25) 60%);
+      display: inline;
+    }
+
+    .title-line::after {
+      content: '';
+      display: block;
+      width: 64px;
+      height: 4px;
+      background: var(--gradient-main);
+      margin: 20px auto 0;
+      border-radius: 2px;
+    }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .pain-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .pain-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: #ffffff;
+      padding: 24px 28px;
+      border-radius: 16px;
+      border-left: 4px solid transparent;
+      box-shadow: 0 2px 12px rgba(30,21,96,0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .pain-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(30,21,96,0.1);
+      border-left-color: var(--color-accent);
+    }
+
+    .pain-icon {
+      width: 40px; height: 40px;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, rgba(103,123,229,0.1), rgba(124,58,237,0.15));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-accent);
+    }
+
+    .pain-text {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    .pain-illust {
+      display: flex;
+      justify-content: center;
+    }
+
+    .pain-illust img {
+      width: 100%;
+      max-width: 380px;
+    }
+
+    /* ─── SOLUTION ──────────────────────────────────── */
+    #solution {
+      background: var(--color-bg);
+      overflow: hidden;
+    }
+
+    .solution-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .solution-card {
+      background: #ffffff;
+      border: 1px solid rgba(124,58,237,0.1);
+      border-radius: 20px;
+      padding: 40px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .solution-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gradient-main);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .solution-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(124,58,237,0.12);
+    }
+
+    .solution-card:hover::before {
+      opacity: 1;
+    }
+
+    .card-number {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--color-accent);
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+      opacity: 0.6;
+    }
+
+    .card-icon-wrap {
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, rgba(103,123,229,0.1), rgba(124,58,237,0.15));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .card-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--color-text);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .card-desc {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--color-text-light);
+      line-height: 1.8;
+    }
+
+    /* ─── FLOW ──────────────────────────────────────── */
+    #flow {
+      background: var(--color-bg-alt);
+      overflow: hidden;
+    }
+
+    .flow-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .flow-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .flow-step {
+      display: flex;
+      gap: 24px;
+      position: relative;
+    }
+
+    .flow-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 27px;
+      top: 56px;
+      bottom: -24px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--color-accent-light), rgba(124,58,237,0.1));
+    }
+
+    .step-num-wrap {
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      background: var(--gradient-main);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 900;
+      box-shadow: 0 4px 20px rgba(124,58,237,0.3);
+    }
+
+    .step-body {
+      padding-top: 12px;
+      padding-bottom: 40px;
+    }
+
+    .step-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .step-title {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--color-text);
+      margin-bottom: 8px;
+    }
+
+    .step-desc {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--color-text-light);
+      line-height: 1.7;
+    }
+
+    .flow-illust {
+      display: flex;
+      justify-content: center;
+    }
+
+    .flow-illust img {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    /* ─── RESULTS ───────────────────────────────────── */
+    #results {
+      background: var(--color-bg-dark);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .results-glow-1 {
+      position: absolute;
+      width: 600px; height: 600px;
+      top: -200px; right: -100px;
+      background: radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .results-glow-2 {
+      position: absolute;
+      width: 400px; height: 400px;
+      bottom: -100px; left: 50px;
+      background: radial-gradient(circle, rgba(103,123,229,0.15) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    #results .section-title {
+      color: #ffffff;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 80px;
+    }
+
+    .result-card {
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 40px 32px;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .result-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .result-num {
+      font-size: 56px;
+      font-weight: 900;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 8px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .result-unit {
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .result-label {
+      font-size: 15px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    .results-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .results-illust {
+      display: flex;
+      justify-content: center;
+    }
+
+    .results-illust img {
+      width: 100%;
+      max-width: 380px;
+      opacity: 0.9;
+      filter: brightness(1.1);
+    }
+
+    .results-cta-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .results-cta-title {
+      font-size: 32px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.4;
+      text-wrap: balance;
+    }
+
+    .results-cta-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.8;
+    }
+
+    /* ─── VOICES ────────────────────────────────────── */
+    #voices {
+      background: var(--color-bg);
+      overflow: hidden;
+    }
+
+    .voices-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .voice-card {
+      background: #ffffff;
+      border: 1px solid rgba(124,58,237,0.08);
+      border-radius: 20px;
+      padding: 36px 32px;
+      position: relative;
+      box-shadow: 0 4px 24px rgba(30,21,96,0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .voice-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(30,21,96,0.1);
+    }
+
+    .voice-quote {
+      font-size: 48px;
+      line-height: 1;
+      color: var(--color-accent);
+      opacity: 0.2;
+      font-weight: 900;
+      margin-bottom: -8px;
+    }
+
+    .voice-text {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .voice-author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: auto;
+    }
+
+    .author-avatar {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      border: 3px solid rgba(124,58,237,0.25);
+      flex-shrink: 0;
+      background-size: 280%;
+      background-repeat: no-repeat;
+      background-position: center 18%;
+    }
+
+    .author-name {
+      font-size: 14px;
+      font-weight: 900;
+      color: var(--color-text);
+    }
+
+    .author-role {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--color-text-light);
+      margin-top: 2px;
+    }
+
+    /* ─── PRICING ───────────────────────────────────── */
+    #pricing {
+      background: var(--color-bg-alt);
+      overflow: hidden;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .pricing-card {
+      background: #ffffff;
+      border: 1px solid rgba(124,58,237,0.1);
+      border-radius: 20px;
+      padding: 40px 32px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(124,58,237,0.1);
+    }
+
+    .pricing-card.featured {
+      background: var(--gradient-hero);
+      border-color: transparent;
+      padding: 48px 32px;
+      position: relative;
+      box-shadow: 0 0 60px rgba(124,58,237,0.3), 0 16px 48px rgba(0,0,0,0.2);
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gradient-main);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      padding: 6px 20px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .plan-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .pricing-card.featured .plan-name {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .plan-price {
+      font-size: 44px;
+      font-weight: 900;
+      color: var(--color-text);
+      line-height: 1;
+      margin-bottom: 6px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .pricing-card.featured .plan-price {
+      color: #ffffff;
+    }
+
+    .plan-price-unit {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--color-text-light);
+    }
+
+    .pricing-card.featured .plan-price-unit {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .plan-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(124,58,237,0.1);
+      margin: 28px 0;
+    }
+
+    .pricing-card.featured .plan-divider {
+      background: rgba(255,255,255,0.12);
+    }
+
+    .plan-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+
+    .plan-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    .pricing-card.featured .plan-features li {
+      color: rgba(255,255,255,0.85);
+    }
+
+    .feature-check {
+      flex-shrink: 0;
+      width: 20px; height: 20px;
+      background: linear-gradient(135deg, rgba(103,123,229,0.15), rgba(124,58,237,0.2));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-accent);
+      margin-top: 2px;
+    }
+
+    .pricing-card.featured .feature-check {
+      background: rgba(255,255,255,0.15);
+      color: #ffffff;
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      background: transparent;
+      border: 2px solid rgba(124,58,237,0.3);
+      color: var(--color-accent);
+      font-family: 'Zen Kaku Gothic Antique', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 14px 24px;
+      border-radius: 100px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn-outline:hover {
+      background: rgba(124,58,237,0.06);
+      border-color: var(--color-accent);
+      transform: translateY(-2px);
+    }
+
+    /* ─── CTA + FAQ ─────────────────────────────────── */
+    #cta-faq {
+      background: var(--color-bg-dark);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cta-glow {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .cta-glow-1 {
+      width: 700px; height: 700px;
+      top: -200px; left: -200px;
+      background: radial-gradient(circle, rgba(103,123,229,0.15) 0%, transparent 65%);
+    }
+    .cta-glow-2 {
+      width: 500px; height: 500px;
+      bottom: -150px; right: -100px;
+      background: radial-gradient(circle, rgba(124,58,237,0.18) 0%, transparent 65%);
+    }
+
+    .cta-faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+      align-items: start;
+    }
+
+    .cta-block {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .cta-title {
+      font-size: 52px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.2;
+      text-wrap: balance;
+    }
+
+    .cta-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.8;
+    }
+
+    .cta-note {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .faq-block {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .faq-title {
+      font-size: 28px;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .faq-item {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 24px 28px;
+      transition: background 0.2s ease;
+    }
+
+    .faq-item:hover {
+      background: rgba(255,255,255,0.07);
+    }
+
+    .faq-q {
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .faq-q-mark {
+      flex-shrink: 0;
+      width: 24px; height: 24px;
+      background: var(--gradient-main);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 900;
+      color: #fff;
+      margin-top: 1px;
+    }
+
+    .faq-a {
+      font-size: 15px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+      padding-left: 34px;
+    }
+
+    /* ─── FOOTER ────────────────────────────────────── */
+    footer {
+      background: #080620;
+      padding: 48px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 24px;
+    }
+
+    .footer-brand {
+      font-size: 16px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--color-accent-pale);
+    }
+
+    .footer-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin-bottom: 24px;
+    }
+
+    .footer-text {
+      font-size: 13px;
+      color: rgba(255,255,255,0.2);
+      text-align: center;
+    }
+
+    /* ─── ANIMATIONS ────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .scroll-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ HERO ════════════════════════════════════════ -->
+  <section id="hero" class="top-line">
+    <div class="hero-ring hero-ring-1"></div>
+    <div class="hero-ring hero-ring-2"></div>
+    <div class="hero-ring hero-ring-3"></div>
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <div class="container" style="padding-top: 80px; padding-bottom: 80px;">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <div class="hero-label">
+            <ph-sparkle weight="duotone" style="font-size:16px;"></ph-sparkle>
+            中小企業専門 AIコンサルティング
+          </div>
+          <h1 class="hero-catch">
+            AIで<br><span class="accent-word">経営を</span><br>変える。
+          </h1>
+          <p class="hero-sub">
+            中小企業専門のAIコンサルティング。<br>
+            現場に合った導入設計から、成果が出るまで伴走します。
+          </p>
+          <div class="hero-cta" style="display:flex; gap:16px; flex-wrap:wrap;">
+            <a href="#" class="btn-primary">
+              無料で相談する
+              <ph-arrow-right weight="bold" style="font-size:18px;"></ph-arrow-right>
+            </a>
+            <a href="#flow" class="btn-secondary">
+              導入の流れを見る
+            </a>
+          </div>
+        </div>
+        <div class="hero-illust">
+          <img src="https://cdn.jsdelivr.net/npm/undraw-svg@1.0.0/svgs/artificial-intelligence.svg"
+               width="480" height="400" alt="AIコンサルティングのイメージ" loading="eager"
+               style="filter: brightness(1.2) drop-shadow(0 0 60px rgba(124,58,237,0.4));">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PAIN ═════════════════════════════════════════ -->
+  <section id="pain">
+    <div class="section-number">01</div>
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <span class="section-label">Pain Point</span>
+        <h2 class="section-title title-line">
+          こんな<span class="highlight">悩み</span>抱えていませんか？
+        </h2>
+      </div>
+      <div class="pain-grid">
+        <div class="pain-list scroll-reveal">
+          <div class="pain-item">
+            <div class="pain-icon">
+              <ph-compass weight="duotone" style="font-size:22px;"></ph-compass>
+            </div>
+            <p class="pain-text">AIを導入したいが、<br>何から始めればいいかわからない</p>
+          </div>
+          <div class="pain-item">
+            <div class="pain-icon">
+              <ph-coins weight="duotone" style="font-size:22px;"></ph-coins>
+            </div>
+            <p class="pain-text">大手向けのサービスは高すぎて<br>自社には合わない</p>
+          </div>
+          <div class="pain-item">
+            <div class="pain-icon">
+              <ph-prohibit weight="duotone" style="font-size:22px;"></ph-prohibit>
+            </div>
+            <p class="pain-text">ツールを入れたが現場で使われず、<br>結局元に戻ってしまった</p>
+          </div>
+          <div class="pain-item">
+            <div class="pain-icon">
+              <ph-magnifying-glass weight="duotone" style="font-size:22px;"></ph-magnifying-glass>
+            </div>
+            <p class="pain-text">効果が出ているのかどうか、<br>測定できていない</p>
+          </div>
+        </div>
+        <div class="pain-illust scroll-reveal">
+          <img src="https://cdn.jsdelivr.net/npm/undraw-svg@1.0.0/svgs/thought-process.svg"
+               width="380" height="320" alt="課題を抱えるビジネスパーソン" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SOLUTION ══════════════════════════════════════ -->
+  <section id="solution">
+    <div class="section-number">02</div>
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <span class="section-label">Our Difference</span>
+        <h2 class="section-title title-line">
+          中小企業に特化した<span class="highlight">3つの違い</span>
+        </h2>
+      </div>
+      <div class="solution-cards">
+        <div class="solution-card scroll-reveal">
+          <p class="card-number">01</p>
+          <div class="card-icon-wrap">
+            <ph-buildings weight="duotone" style="font-size:32px; color:#7c3aed;"></ph-buildings>
+          </div>
+          <h3 class="card-title">中小企業専門設計</h3>
+          <p class="card-desc">予算・人員・ITリテラシーに合ったAI活用プランを提案。大企業向けの過剰なソリューションではなく、御社の現場にフィットした導入設計をします。</p>
+        </div>
+        <div class="solution-card scroll-reveal">
+          <p class="card-number">02</p>
+          <div class="card-icon-wrap">
+            <ph-handshake weight="duotone" style="font-size:32px; color:#7c3aed;"></ph-handshake>
+          </div>
+          <h3 class="card-title">現場実装まで伴走</h3>
+          <p class="card-desc">提案書を渡して終わりにしません。実際に現場でAIが動き、社員が使いこなせるようになるまで、設定・研修・フォローをすべて対応します。</p>
+        </div>
+        <div class="solution-card scroll-reveal">
+          <p class="card-number">03</p>
+          <div class="card-icon-wrap">
+            <ph-chart-line-up weight="duotone" style="font-size:32px; color:#7c3aed;"></ph-chart-line-up>
+          </div>
+          <h3 class="card-title">成果にコミット</h3>
+          <p class="card-desc">導入後の効果測定まで責任を持って関与します。KPIを設定し、定期的にレビューしながら、継続的に改善を繰り返します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FLOW ══════════════════════════════════════════ -->
+  <section id="flow">
+    <div class="section-number">03</div>
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <span class="section-label">How It Works</span>
+        <h2 class="section-title title-line">
+          相談から導入まで<span class="highlight">4ステップ</span>
+        </h2>
+      </div>
+      <div class="flow-grid">
+        <div class="flow-steps scroll-reveal">
+          <div class="flow-step">
+            <div class="step-num-wrap">1</div>
+            <div class="step-body">
+              <p class="step-label">Step 01</p>
+              <h3 class="step-title">無料相談（60分）</h3>
+              <p class="step-desc">現状の業務課題をヒアリングします。AIで解決できる課題の優先順位を一緒に整理します。</p>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="step-num-wrap">2</div>
+            <div class="step-body">
+              <p class="step-label">Step 02</p>
+              <h3 class="step-title">AI活用設計</h3>
+              <p class="step-desc">自社に合ったツールと活用方法を提案。費用対効果を明確にしたプランを作成します。</p>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="step-num-wrap">3</div>
+            <div class="step-body">
+              <p class="step-label">Step 03</p>
+              <h3 class="step-title">現場導入サポート</h3>
+              <p class="step-desc">社員研修・ツール設定まで対応。現場で確実に使われる状態を作ります。</p>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="step-num-wrap">4</div>
+            <div class="step-body" style="padding-bottom:0;">
+              <p class="step-label">Step 04</p>
+              <h3 class="step-title">効果測定・改善</h3>
+              <p class="step-desc">KPIを設定し、定期的にレビュー。数字で成果を確認しながら継続改善します。</p>
+            </div>
+          </div>
+        </div>
+        <div class="flow-illust scroll-reveal">
+          <img src="https://cdn.jsdelivr.net/npm/undraw-svg@1.0.0/svgs/process.svg"
+               width="400" height="340" alt="導入プロセスのイメージ" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ RESULTS ════════════════════════════════════════ -->
+  <section id="results">
+    <div class="results-glow-1"></div>
+    <div class="results-glow-2"></div>
+    <div class="section-number" style="color: rgba(255,255,255,0.5);">04</div>
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <span class="section-label" style="color: var(--color-accent-pale);">Real Results</span>
+        <h2 class="section-title title-line" style="color: #ffffff;">
+          導入企業の<span class="highlight" style="background: linear-gradient(transparent 60%, rgba(124,58,237,0.5) 60%);">リアルな数字</span>
+        </h2>
+      </div>
+      <div class="results-grid">
+        <div class="result-card scroll-reveal">
+          <div class="result-num">50<span class="result-unit">社+</span></div>
+          <p class="result-label">導入企業数</p>
+        </div>
+        <div class="result-card scroll-reveal">
+          <div class="result-num">週<span style="font-size:36px;">12</span><span class="result-unit">h</span></div>
+          <p class="result-label">平均業務削減時間</p>
+        </div>
+        <div class="result-card scroll-reveal">
+          <div class="result-num">97<span class="result-unit">%</span></div>
+          <p class="result-label">顧客満足度</p>
+        </div>
+        <div class="result-card scroll-reveal">
+          <div class="result-num">94<span class="result-unit">%</span></div>
+          <p class="result-label">導入後継続率</p>
+        </div>
+      </div>
+      <div class="results-bottom">
+        <div class="results-illust scroll-reveal" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 32px;">
+          <img src="https://cdn.jsdelivr.net/npm/undraw-svg@1.0.0/svgs/growth-analytics.svg"
+               width="380" height="300" alt="成長グラフのイメージ" loading="lazy"
+               style="filter: brightness(1.15);">
+        </div>
+        <div class="results-cta-wrap scroll-reveal">
+          <h3 class="results-cta-title">あなたの会社でも、<br>同じ変化を起こしませんか？</h3>
+          <p class="results-cta-sub">まずは60分の無料相談から。自社に合ったAI活用の方向性が、その日のうちにわかります。</p>
+          <div>
+            <a href="#" class="btn-primary">
+              無料相談を申し込む
+              <ph-arrow-right weight="bold" style="font-size:18px;"></ph-arrow-right>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ VOICES ═════════════════════════════════════════ -->
+  <section id="voices">
+    <div class="section-number">05</div>
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <span class="section-label">Testimonials</span>
+        <h2 class="section-title title-line">
+          導入した<span class="highlight">経営者</span>からの声
+        </h2>
+      </div>
+      <div class="voices-grid">
+        <div class="voice-card scroll-reveal">
+          <div class="voice-quote">"</div>
+          <p class="voice-text">AIのことは全然わからなかったが、現場に合わせて丁寧に設計してくれた。社員が自然に使いこなせるようになった。</p>
+          <div class="voice-author">
+            <div class="author-avatar" style="background-image: url('tanaka.png');" role="img" aria-label="田中一郎様の写真"></div>
+            <div>
+              <p class="author-role">日本未来産業</p>
+              <p class="author-role">代表取締役社長</p>
+              <p class="author-name">田中一郎 様</p>
+            </div>
+          </div>
+        </div>
+        <div class="voice-card scroll-reveal">
+          <div class="voice-quote">"</div>
+          <p class="voice-text">提案だけで終わる会社が多い中、実際に動くまで付き合ってくれた。他社と比べて圧倒的に丁寧だと感じた。</p>
+          <div class="voice-author">
+            <div class="author-avatar" style="background-image: url('sato.png'); background-position: center 15%;" role="img" aria-label="佐藤健様の写真"></div>
+            <div>
+              <p class="author-role">テックスフィア</p>
+              <p class="author-role">代表取締役社長</p>
+              <p class="author-name">佐藤健 様</p>
+            </div>
+          </div>
+        </div>
+        <div class="voice-card scroll-reveal">
+          <div class="voice-quote">"</div>
+          <p class="voice-text">導入3ヶ月で、週の残業時間が半分になった。コスト以上の効果が出ていて、もっと早く導入すればよかった。</p>
+          <div class="voice-author">
+            <div class="author-avatar" style="background-image: url('suzuki.png'); background-position: center 15%;" role="img" aria-label="鈴木和子様の写真"></div>
+            <div>
+              <p class="author-role">和心グループ</p>
+              <p class="author-role">代表取締役社長</p>
+              <p class="author-name">鈴木和子 様</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PRICING ════════════════════════════════════════ -->
+  <section id="pricing">
+    <div class="section-number">06</div>
+    <div class="container">
+      <div class="section-header scroll-reveal">
+        <span class="section-label">Pricing</span>
+        <h2 class="section-title title-line">
+          シンプルな<span class="highlight">3プラン</span>
+        </h2>
+      </div>
+      <div class="pricing-grid">
+        <!-- スターター -->
+        <div class="pricing-card scroll-reveal">
+          <p class="plan-name">Starter</p>
+          <div>
+            <span class="plan-price">¥50,000</span>
+            <span class="plan-price-unit">〜 / 月</span>
+          </div>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li>
+              <span class="feature-check"><ph-check weight="bold" style="font-size:12px;"></ph-check></span>
+              現状診断・課題整理
+            </li>
+            <li>
+              <span class="feature-check"><ph-check weight="bold" style="font-size:12px;"></ph-check></span>
+              AI活用プラン提案
+            </li>
+            <li>
+              <span class="feature-check"><ph-check weight="bold" style="font-size:12px;"></ph-check></span>
+              月1回のレポート共有
+            </li>
+          </ul>
+          <a href="#" class="btn-outline">
+            このプランで相談する
+          </a>
+        </div>
+
+        <!-- スタンダード（おすすめ） -->
+        <div class="pricing-card featured scroll-reveal">
+          <div class="featured-badge">★ おすすめ</div>
+          <p class="plan-name">Standard</p>
+          <div>
+            <span class="plan-price" style="color:#fff;">¥120,000</span>
+            <span class="plan-price-unit">〜 / 月</span>
+          </div>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li>
+              <span class="feature-check"><ph-check weight="bold" style="font-size:12px;"></ph-check></span>
+              スタータープラン全内容
+            </li>
+            <li>
+              <span class="feature-check"><ph-check weight="bold" style="font-size:12px;"></ph-check></span>
+              ツール設定・導入サポート
+            </li>
+            <li>
+              <span class="feature-check"><ph-check weight="bold" style="font-size:12px;"></ph-check></span>
+              社員向けAI研修（2回）
+            </li>
+            <li>
+              <span class="feature-check"><ph-check weight="bold" style="font-size:12px;"></ph-check></span>
+              月2回のKPIレビュー
+            </li>
+          </ul>
+          <a href="#" class="btn-primary" style="justify-content:center; width:100%;">
+            このプランで相談する
+            <ph-arrow-right weight="bold" style="font-size:18px;"></ph-arrow-right>
+          </a>
+        </div>
+
+        <!-- プレミアム -->
+        <div class="pricing-card scroll-reveal">
+          <p class="plan-name">Premium</p>
+          <div>
+            <span class="plan-price">¥250,000</span>
+            <span class="plan-price-unit">〜 / 月</span>
+          </div>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li>
+              <span class="feature-check"><ph-check weight="bold" style="font-size:12px;"></ph-check></span>
+              スタンダードプラン全内容
+            </li>
+            <li>
+              <span class="feature-check"><ph-check weight="bold" style="font-size:12px;"></ph-check></span>
+              専任担当者のアサイン
+            </li>
+            <li>
+              <span class="feature-check"><ph-check weight="bold" style="font-size:12px;"></ph-check></span>
+              週次ミーティング対応
+            </li>
+            <li>
+              <span class="feature-check"><ph-check weight="bold" style="font-size:12px;"></ph-check></span>
+              完全伴走・優先サポート
+            </li>
+          </ul>
+          <a href="#" class="btn-outline">
+            このプランで相談する
+          </a>
+        </div>
+      </div>
+
+      <p style="text-align:center; margin-top:40px; font-size:14px; color: var(--color-text-light);">
+        ※ 料金はビジネス規模・課題内容によって変動します。まずは無料相談にてお見積もりします。
+      </p>
+    </div>
+  </section>
+
+  <!-- ══ CTA + FAQ ══════════════════════════════════════ -->
+  <section id="cta-faq">
+    <div class="cta-glow cta-glow-1"></div>
+    <div class="cta-glow cta-glow-2"></div>
+    <div class="container">
+      <div class="cta-faq-grid">
+        <div class="cta-block scroll-reveal">
+          <h2 class="cta-title">まずは<br>無料で<br>話しましょう。</h2>
+          <p class="cta-sub">60分の無料相談で、自社に合ったAI活用の方向性がわかります。費用・内容に関するご相談だけでも歓迎です。</p>
+          <div>
+            <a href="#" class="btn-primary">
+              無料相談を申し込む
+              <ph-arrow-right weight="bold" style="font-size:18px;"></ph-arrow-right>
+            </a>
+          </div>
+          <p class="cta-note">※ しつこい営業は一切行いません</p>
+        </div>
+
+        <div class="faq-block scroll-reveal">
+          <h3 class="faq-title">よくある質問</h3>
+          <div class="faq-item">
+            <p class="faq-q">
+              <span class="faq-q-mark">Q</span>
+              IT担当者がいなくても大丈夫ですか？
+            </p>
+            <p class="faq-a">問題ありません。非エンジニアの方でも使えるよう、丁寧に設定・研修します。専門知識は一切不要です。</p>
+          </div>
+          <div class="faq-item">
+            <p class="faq-q">
+              <span class="faq-q-mark">Q</span>
+              初期費用はかかりますか？
+            </p>
+            <p class="faq-a">初期費用0円のプランからご用意しています。月額のみでスタートできますので、まずはお気軽にご相談ください。</p>
+          </div>
+          <div class="faq-item">
+            <p class="faq-q">
+              <span class="faq-q-mark">Q</span>
+              どんな業種でも対応できますか？
+            </p>
+            <p class="faq-a">製造・小売・サービス業など幅広く対応実績があります。業種に合わせた活用事例をご提案します。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══════════════════════════════════════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-brand">AIコンサルティング</p>
+        <nav class="footer-links">
+          <a href="https://example.com" target="_blank" rel="noopener">企業公式サイト</a>
+          <a href="#">プライバシーポリシー</a>
+          <a href="#">お問い合わせ</a>
+        </nav>
+      </div>
+      <div class="footer-divider"></div>
+      <p class="footer-text">© 2024 AIコンサルティング. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
